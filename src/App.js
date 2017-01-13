@@ -4,7 +4,6 @@ import './App.css';
 import config from './config';
 
 
-
 class App extends Component {
 
   // getData() {
@@ -14,7 +13,7 @@ class App extends Component {
   handleCLick() {
     console.log("bored yet?");
 
-    fetch("https://www.ncdc.noaa.gov/cdo-web/api/v2/stations/GHCND:USW00013958", {
+    fetch("https://www.ncdc.noaa.gov/cdo-web/api/v2/datatypes?datacategoryid=TEMP&limit=100", {
       method: "GET",
       headers: {
         "token": config.CDN_TOKEN
@@ -22,7 +21,7 @@ class App extends Component {
     }).then(function(res) {
       return res.json();
     }).then(function(data) {
-      console.log("success!", data.name);
+      console.log("success!", data);
     }).catch(function(err) {
       console.log("failure", err);
     });
